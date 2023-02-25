@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99161d4f6710a44dab6c795f4fab5fee, type: 3}
   m_Name: FailureCard
   m_EditorClassIdentifier: 
-  cardStrength: 4
-  cardMana: 0.395
-  cardDescription: Using this card makes your enemy fail hitting you !
-  frontSideArt: {fileID: 21300000, guid: 4acbdde94ad20c0488b75483b4847c1c, type: 3}
+  _cardStrength: 4
+  _cardMana: 0.3
+  _cardDescription: Your enemy failed to to hit you !
+  _frontSideArt: {fileID: 21300000, guid: 4acbdde94ad20c0488b75483b4847c1c, type: 3}
   cardType: 2

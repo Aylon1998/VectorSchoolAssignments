@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99161d4f6710a44dab6c795f4fab5fee, type: 3}
   m_Name: PowerUpCard
   m_EditorClassIdentifier: 
-  cardStrength: 3
-  cardMana: 0.105
-  cardDescription: A cool power-up !
-  frontSideArt: {fileID: 21300000, guid: 0065a8a55e1c40641a4f956b69d003b5, type: 3}
+  _cardStrength: 3
+  _cardMana: 0.2
+  _cardDescription: A nice power-up !
+  _frontSideArt: {fileID: 21300000, guid: 0065a8a55e1c40641a4f956b69d003b5, type: 3}
   cardType: 0

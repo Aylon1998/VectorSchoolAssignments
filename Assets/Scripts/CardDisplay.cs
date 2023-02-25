@@ -1,20 +1,42 @@
-﻿using UnityEngine;
-using CardGameCode.DataLayer;
-using UnityEngine.UI;
-using TMPro;
+﻿ using UnityEngine;
+ using CardGameCode.DataLayer;
+ using UnityEngine.UI;
+ using TMPro;
 
-namespace CardGameCode.VisualLayer { 
+ namespace CardGameCode.VisualLayer { 
 
     public class CardDisplay : MonoBehaviour
     {
-        #region Variables 
+        #region Fields
 
-        [SerializeField] private TextMeshProUGUI cardDescriptionText, cardStrengthText ,cardNameText;
-        [SerializeField] private Image frontSideImage;
-        [SerializeField] private Scrollbar manaBar;
+        [SerializeField] private TextMeshProUGUI _cardDescriptionText, _cardStrengthText ,_cardNameText;
+        [SerializeField] private Image _frontSideImage;
+        [SerializeField] private Scrollbar _manaBar;
+        [SerializeField] private CardData cardData;
 
-        public CardData cardData;
+        #endregion
 
+        #region Methods 
+
+        private void Start()
+        {
+            _manaBar.size = cardData.CardMana;
+        }
+
+        private void OnValidate()
+        {
+            if (cardData == null)
+            {
+                return;
+            }
+
+             _cardDescriptionText.text = cardData.CardDescription;
+             _cardStrengthText.text = cardData.CardStrength.ToString();
+             _cardNameText.text = ChooseCardName();
+             _frontSideImage.sprite = cardData.FrontSideArt;
+            
+        }
+        
         private string ChooseCardName()
         {
             switch (cardData.cardType)
@@ -33,26 +55,6 @@ namespace CardGameCode.VisualLayer {
 
                 default:
                     return "Unknown Card Type";
-            }
-        }
-
-        #endregion
-
-        #region Methods 
-
-        private void Start()
-        {
-            manaBar.size = cardData.CardMana;
-        }
-
-        private void OnValidate()
-        {
-            if (cardData != null)
-            {
-                cardDescriptionText.text = cardData.CardDescription;
-                cardStrengthText.text = cardData.CardStrength.ToString();
-                cardNameText.text = ChooseCardName();
-                frontSideImage.sprite = cardData.frontSideArt;
             }
         }
 

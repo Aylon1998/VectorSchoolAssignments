@@ -3,65 +3,56 @@
 namespace CardGameCode.DataLayer
 {
     [CreateAssetMenu(fileName = "GenericCardData", menuName = "Card/GenericCardData")]
+    public class CardData : ScriptableObject
+    {
+        #region Fields
 
-        public class CardData : ScriptableObject
+        [SerializeField] [Range(1, CardStrengthMaxValue)] private int _cardStrength;
+        [SerializeField] [Range(0, CardManaMaxValue)] private float _cardMana;
+        [TextArea] [SerializeField] private string _cardDescription;
+        [SerializeField] private Sprite _frontSideArt;
+
+
+        public CardType cardType;
+
+        #endregion
+
+        #region Constants
+
+        private const int CardStrengthMaxValue = 10;
+        private const float CardManaMaxValue = 1f;
+
+        #endregion
+
+        #region Properties
+
+        public int CardStrength
         {
-             #region Variables
+            get { return _cardStrength; }
+            set { _cardStrength = Mathf.Clamp(value, 1, CardStrengthMaxValue); }
+        }
 
-            [SerializeField] [Range(1,cardStrengthMaxValue)] private int cardStrength;
-            [SerializeField] [Range(0, cardManaMaxValue)] private float cardMana;
-            [TextArea] [SerializeField] private string cardDescription;
+        public float CardMana
+        {
+            get { return _cardMana; }
+            set { _cardMana = Mathf.Clamp(value, 0, CardManaMaxValue); }
+        }
 
-            private const int cardStrengthMaxValue = 10;
-            private const float cardManaMaxValue = 1f;
+        public string CardDescription => _cardDescription;
+        public Sprite FrontSideArt => _frontSideArt;
 
-            public Sprite frontSideArt;
-            public CardType cardType;
+        #endregion
 
-            public int CardStrength
-            { 
-                get { return cardStrength; }
+        #region Enums
 
-                set 
-                {
-                    if(value >= cardStrengthMaxValue)
-                    {
-                        value = cardStrengthMaxValue;
-                    }
+        public enum CardType
+        {
+            PowerUpCard,
+            EventCard,
+            FailureCard,
+            SurvivalCard
+        }
 
-                    cardStrength = value;
-                } 
-            }
-
-            public float CardMana
-            {
-                get { return cardMana; }
-
-                set
-                {
-                    if (value >= cardManaMaxValue)
-                    {
-                        value = cardManaMaxValue;
-                    }
-
-                    cardMana = value;
-                }
-            }
-
-            public string CardDescription => cardDescription;
-
-            #endregion
-
-             #region Enums
-
-            public enum CardType
-                 {
-                        PowerUpCard,
-                        EventCard,
-                        FailureCard,
-                        SurvivalCard
-                 }
-            }
-
-            #endregion
+        #endregion
+    }
 }
