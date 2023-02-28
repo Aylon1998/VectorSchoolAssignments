@@ -10,7 +10,6 @@ namespace VectorSchool.DataLayer
 
         #endregion
 
-
         #region Fields
 
         private static PlayerModelProvider _instance;

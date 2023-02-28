@@ -22,7 +22,6 @@ namespace VectorSchool.DataLayer
         public void Initialize(PlayerModel playerModel)
         {
             _playerModel = playerModel;
-            Load();
         }
 
         public void Save()
@@ -47,6 +46,7 @@ namespace VectorSchool.DataLayer
             var playerModelProvider = PlayerModelProvider.Instance;
             var playerDataManager = new PlayerDataManager();
             playerDataManager.Initialize(playerModelProvider.GetPlayerModel());
+            playerDataManager.Load();
         }
 
         #endregion

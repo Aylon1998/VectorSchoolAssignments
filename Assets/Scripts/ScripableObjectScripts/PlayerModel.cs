@@ -36,8 +36,12 @@ namespace VectorSchool.DataLayer
 
         public void WithdrawCoins(int amountOfCoinsToWithdraw)
         {
-            _coinsBalance -= amountOfCoinsToWithdraw;
-            CoinsBalanceChanged?.Invoke(_coinsBalance);
+            if (_coinsBalance >= amountOfCoinsToWithdraw)
+            {
+                _coinsBalance -= amountOfCoinsToWithdraw;
+                CoinsBalanceChanged?.Invoke(_coinsBalance);
+
+            }
         }
 
         public void AddGems(int amountOfGemsToAdd)
@@ -48,8 +52,12 @@ namespace VectorSchool.DataLayer
 
         public void WithdrawGems(int amountOfGemsToWithdraw)
         {
-            _gemsBalance -= amountOfGemsToWithdraw;
-            GemsBalanceChanged?.Invoke(_gemsBalance);
+            if (_gemsBalance >= amountOfGemsToWithdraw)
+            {
+                _gemsBalance -= amountOfGemsToWithdraw;
+                GemsBalanceChanged?.Invoke(_gemsBalance);
+
+            }
         }
 
         #endregion
